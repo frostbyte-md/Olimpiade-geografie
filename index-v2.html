@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olimpiade la Geografie — Teste PDF cu Bareme & Teste Digitale Interactive (Clasele IX–XII)</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-mid: #2563eb;
+    --primary-light: #eff6ff;
+    --accent: #0f766e;
+    --accent-mid: #0d9488;
+    --accent-light: #f0fdfa;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+    --ok: #16a34a;
+    --ok-light: #dcfce7;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --border: #cbd5e1;
+    --border-soft: #e2e8f0;
+    --text: #0f172a;
+    --muted: #475569;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* Sticky Topbar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #0f172a;
+    color: #fff;
+    padding: 11px 20px;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.25);
+  }
+  .topbar-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 15.5px;
+    flex-wrap: wrap;
+  }
+  .badge-top {
+    background: #2563eb;
+    color: #fff;
+    padding: 3px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+  .progress-track {
+    width: 130px;
+    height: 8px;
+    background: #334155;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #22c55e;
+    border-radius: 999px;
+    transition: width 0.25s ease;
+  }
+
+  /* Main Container */
+  .container {
+    max-width: 1320px;
+    margin: 20px auto 52px;
+    padding: 0 18px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 58%, #0f766e 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.16);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .hero-main { max-width: 780px; }
+  .hero-kicker {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    opacity: 0.88;
+    font-weight: 700;
+  }
+  .hero h1 {
+    margin: 5px 0 8px;
+    font-size: 25px;
+    line-height: 1.22;
+    font-weight: 800;
+  }
+  .hero p {
+    margin: 0;
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.92);
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero-chip {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Class Selector Bar */
+  .nav-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .class-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+  }
+  .class-tab {
+    border: 1.5px solid var(--border);
+    background: #f8fafc;
+    color: var(--text);
+    padding: 9px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.16s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 132px;
+  }
+  .class-tab:hover {
+    border-color: #60a5fa;
+    background: var(--primary-light);
+  }
+  .class-tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.22);
+  }
+  .tab-label {
+    font-size: 14.5px;
+    font-weight: 800;
+  }
+  .tab-sub {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .class-tab.active .tab-sub {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .search-box {
+    position: relative;
+    min-width: 220px;
+    width: 260px;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 9px 12px 9px 34px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: 13.5px;
+    background: #f8fafc;
+    color: var(--text);
+  }
+  .search-box input:focus {
+    outline: 2px solid #3b82f6;
+    background: #fff;
+    border-color: #3b82f6;
+  }
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  /* Grade Block */
+  .grade-block {
+    margin-bottom: 30px;
+  }
+  .grade-banner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 0 2px;
+  }
+  .grade-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .grade-banner h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .grade-topic-pill {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid #bfdbfe;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 3px 11px;
+    border-radius: 999px;
+  }
+  .btn-drive-folder {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--muted);
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+  .btn-drive-folder:hover {
+    border-color: var(--primary-mid);
+    color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  /* Asymmetric 2-Column Workspace: Left = PDFs+Barems (~38%), Right = Larger Digital Games (~62%) */
+  .workspace-grid {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.92fr) minmax(440px, 1.48fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* Left Column: Physical Format (PDF + Barems) */
+  .panel-pdf {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 4px solid #475569;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  }
+  .panel-head {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #f8fafc;
+  }
+  .panel-head h3 {
+    margin: 0;
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .panel-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    background: #e2e8f0;
+    padding: 2px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .panel-subnote {
+    padding: 8px 16px;
+    font-size: 12.5px;
+    color: var(--muted);
+    background: #ffffff;
+    border-bottom: 1px dashed var(--border-soft);
+  }
+
+  .pdf-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .pdf-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.14s ease;
+  }
+  .pdf-row:last-child { border-bottom: none; }
+  .pdf-row:hover { background: #f8fafc; }
+
+  .pdf-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .pdf-line1 {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  .pdf-year {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 1px 7px;
+    border-radius: 5px;
+  }
+  .pdf-stage {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .pdf-date {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .mini-game-dot {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid #99f6e4;
+    padding: 0 6px;
+    border-radius: 999px;
+  }
+
+  .pdf-btns {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .btn-pdf, .btn-barem {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.14s ease;
+  }
+  .btn-pdf {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+  }
+  .btn-pdf:hover {
+    background: #1d4ed8;
+    color: #fff;
+    border-color: #1d4ed8;
+  }
+  .btn-barem {
+    background: #f0fdfa;
+    color: #0f766e;
+    border: 1px solid #99f6e4;
+  }
+  .btn-barem:hover {
+    background: #0f766e;
+    color: #fff;
+    border-color: #0f766e;
+  }
+
+  /* Right Column: Larger Digital Interactive Game-Tests */
+  .panel-digital {
+    background: var(--card);
+    border: 1.5px solid #93c5fd;
+    border-top: 5px solid var(--primary-mid);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(30, 58, 138, 0.08);
+  }
+  .panel-digital .panel-head {
+    background: linear-gradient(90deg, #eff6ff 0%, #f0fdfa 100%);
+    padding: 16px 20px;
+    border-bottom: 1px solid #dbeafe;
+  }
+  .panel-digital .panel-head h3 {
+    font-size: 17.5px;
+    color: var(--primary);
+  }
+  .panel-digital .panel-count {
+    background: var(--primary);
+    color: #fff;
+    font-size: 12.5px;
+    padding: 3px 11px;
+  }
+  .digital-intro {
+    padding: 10px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+  .digital-intro span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+  }
+
+  .digital-grid {
+    padding: 18px 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .game-card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    min-height: 215px;
+  }
+  .game-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-mid);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+  }
+  .game-card.done {
+    border-color: var(--ok);
+    background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+  }
+
+  .game-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .tag-raionala {
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid #99f6e4;
+  }
+  .tag-republicana {
+    background: var(--amber-light);
+    color: var(--amber);
+    border: 1px solid #fcd34d;
+  }
+  .tag-arhiva {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+  }
+  .year-chip {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 2px 9px;
+    border-radius: 6px;
+  }
+
+  .game-title {
+    margin: 10px 0 6px;
+    font-size: 17.5px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .game-desc {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  .game-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .feat-chip {
+    font-size: 11.8px;
+    font-weight: 600;
+    color: #334155;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+
+  .game-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-soft);
+  }
+  .btn-play {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.22);
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .btn-play:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+  .btn-done {
+    border: 1.5px solid var(--border);
+    background: #f8fafc;
+    color: var(--muted);
+    padding: 9px 12px;
+    border-radius: 9px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+  }
+  .btn-done:hover {
+    border-color: var(--ok);
+    color: var(--ok);
+  }
+  .game-card.done .btn-done {
+    background: var(--ok-light);
+    border-color: var(--ok);
+    color: #14532d;
+  }
+
+  .empty-state {
+    background: var(--card);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 34px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  /* Tips & Footer */
+  .tips-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 8px;
+    font-size: 13.5px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .tips-box strong { color: var(--text); }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .link-reset {
+    background: none;
+    border: none;
+    color: #dc2626;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+  }
+
+  @media (max-width: 1060px) {
+    .workspace-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 680px) {
+    .hero { padding: 18px; }
+    .hero h1 { font-size: 21px; }
+    .digital-grid { grid-template-columns: 1fr; padding: 14px; }
+    .search-box { width: 100%; }
+    .class-tab { flex: 1 1 135px; }
+    .pdf-row { flex-direction: column; align-items: flex-start; }
+    .pdf-btns { width: 100%; }
+    .btn-pdf, .btn-barem { flex: 1; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="badge-top">GEOGRAFIE • OLIMPIADE</span>
+      <span>Portal de pregătire — Teste PDF cu Bareme & Teste Digitale Interactive</span>
+    </div>
+    <div class="progress-wrap" title="Progresul testelor digitale salvat local în browser">
+      <span>Teste digitale rezolvate: <strong id="doneCount" style="color:#fff;">0 / 10</strong></span>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-kicker">Ministerul Educației și Cercetării • Olimpiade la Geografie (Clasele IX–XII)</div>
+      <h1>Alege clasa și exersează pentru Olimpiada la Geografie</h1>
+      <p>
+        Pentru fiecare clasă ai în stânga <strong>arhiva completă de teste oficiale în format PDF cu bareme (2018–2026)</strong>,
+        iar alături, în dreapta, <strong>testele digitale interactive</strong> cu verificare automată, hărți-contur clickabile și cronometru.
+      </p>
+    </div>
+    <div class="hero-stats">
+      <span class="hero-chip">📄 32 teste PDF + 32 bareme</span>
+      <span class="hero-chip">🎮 10 teste digitale interactive</span>
+      <span class="hero-chip">🎓 Clasele IX–XII</span>
+    </div>
+  </section>
+
+  <section class="nav-card" aria-label="Selectare clasă">
+    <div class="class-tabs" id="classTabs"></div>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Caută an (ex. 2026, 2024) sau etapă..." autocomplete="off">
+    </div>
+  </section>
+
+  <div id="portalRoot"></div>
+
+  <section class="tips-box">
+    <div>
+      <strong>Sfaturi rapide:</strong>
+      Testele PDF se deschid direct din arhiva Google Drive (pentru imprimare sau rezolvare pe caiet), iar testele digitale au variante amestecate la fiecare încercare și permit descărcarea raportului <code>.txt</code> cu punctajul final.
+    </div>
+  </section>
+
+  <footer class="footer-note">
+    <span>Portal Olimpiade la Geografie • Arhivă PDF + Teste Interactive</span>
+    <span>•</span>
+    <button type="button" class="link-reset" onclick="resetProgress()">Resetează progresul bifat</button>
+  </footer>
+</main>
+
+<script>
+const GITHUB_BASE = 'https://frostbyte-md.github.io/Olimpiade-geografie/';
+const driveFileUrl = id => `https://drive.google.com/file/d/${id}/view`;
+const driveFolderUrl = id => `https://drive.google.com/drive/folders/${id}`;
+
+const DATA = {
+  9: {
+    label: 'Clasa a IX-a',
+    topic: 'Geografia Republicii Moldova',
+    driveFolderId: '1IotCrcuFP-7z1IzzRqxPSEX4OIVG7VFo',
+    pdfs: [
+      { year: 2026, stage: 'Etapa republicană', date: '03 mai 2026', testId: '1kPaG1xoMVt94nERY8IS3Wsn_HmF0BLpD', baremId: '1HtztUCqdDG4-xEoXfKyeg3sFayb3_WG1', hasGame: true },
+      { year: 2026, stage: 'Etapa raională',    date: '28 februarie 2026', testId: '1NaxqTpFCoH8Msot1tb1lHGe5gaYAuL7c', baremId: '1ZnkydA15bfGIhiO2KFNYM2R4_iUyF6_t', hasGame: true },
+      { year: 2025, stage: 'Etapa republicană', date: '23 aprilie 2025', testId: '1B-KdI1dlaDY6-cz1ky0zZq9UymQBQ7mE', baremId: '1WmxKGmZMXWe5EBf56fj9cIPctOrX6w9f' },
+      { year: 2024, stage: 'Etapa republicană', date: '10 mai 2024', testId: '1SDw5i03N5U2_t_9KapkwxGJuC9ewsME5', baremId: '1s6dvFwQ2pM_ucDMxqmKaMb6vZb6h2UZX' },
+      { year: 2023, stage: 'Etapa republicană', date: '08 mai 2023', testId: '1BrdnyCK4WoeYsq5be1WGTi60U2H036_u', baremId: '1diRCDDyC_fUnLGe8zYxGYm6jPYo4apEv' },
+      { year: 2022, stage: 'Etapa republicană', date: '27 martie 2022', testId: '13IS5sDWjZVubkg-9XIml0_7BpaLFMtiK', baremId: '1IXL9WlZ7pl8zpD_PoXeuvm9xeDjPSDEk' },
+      { year: 2019, stage: 'Etapa republicană', date: '26 martie 2019', testId: '1gzRLY2it_eao_NKQnHtvfGrYRKYK5js3', baremId: '11D-aVi0ihq9-_XXXXLI9VMlgr2W8kKKl', hasGame: true },
+      { year: 2018, stage: 'Etapa republicană', date: '28 aprilie 2018', testId: '1qpmQCg2MIeqSqb7addFRBV4_oa7ByiWs', baremId: '1Zh9nVxzDiMpUqR0xslTN_xxi7To7BKdU', hasGame: true }
+    ],
+    games: [
+      {
+        id: 'clasa9_republicana_2026',
+        year: 2026,
+        stageType: 'republicana',
+        stageLabel: 'Etapa republicană',
+        title: 'Olimpiada 2026 — Etapa republicană',
+        desc: '03 mai 2026 • 10 itemi compleți, tabel centrale electrice, coordonate și localizare pe harta-contur a R. Moldova.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🗺️ Hartă R. Moldova'],
+        file: 'olimpiada_geografie_clasa9_republicana_2026.html'
+      },
+      {
+        id: 'clasa9_raionala_2026',
+        year: 2026,
+        stageType: 'raionala',
+        stageLabel: 'Etapa raională / municipală',
+        title: 'Olimpiada 2026 — Etapa raională',
+        desc: '28 februarie 2026 • 10 itemi, schemă interactivă agricultură, diagrama dealurilor și localizare pe hartă.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🗺️ Hartă R. Moldova'],
+        file: 'olimpiada_geografie_clasa9_raionala_2026.html'
+      },
+      {
+        id: 'clasa9_2019',
+        year: 2019,
+        stageType: 'arhiva',
+        stageLabel: 'Etapa republicană 2019',
+        title: 'Olimpiada 2019 — Test interactiv',
+        desc: '26 martie 2019 • Exersare completă cu verificare automată a fiecărui item și reamestecarea variantelor.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🔀 Grilă aleatorie'],
+        file: 'olimpiada_geografie_clasa9_2019.html'
+      },
+      {
+        id: 'clasa9_2018',
+        year: 2018,
+        stageType: 'arhiva',
+        stageLabel: 'Etapa republicană 2018',
+        title: 'Olimpiada 2018 — Test interactiv',
+        desc: '28 aprilie 2018 • Exersare completă pe subiectele de Geografia Republicii Moldova, cu barem integrat.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🔀 Grilă aleatorie'],
+        file: 'olimpiada_geografie_clasa9_2018.html'
+      }
+    ]
+  },
+
+  10: {
+    label: 'Clasa a X-a',
+    topic: 'Geografia fizică generală',
+    driveFolderId: '10cRfaicLmj7Z_5qd_6TwOmOAQJ4cK_Hm',
+    pdfs: [
+      { year: 2026, stage: 'Etapa republicană', date: '03 mai 2026', testId: '1w9J7-GSyeNuEvKPxS6xIbQ9y7Tk3oKq8', baremId: '1QsOhKxwqZumBzdtdITZk2cI4NILSXwKv', hasGame: true },
+      { year: 2026, stage: 'Etapa raională',    date: '28 februarie 2026', testId: '1zENbrHthmBvogjk3Jk666XI4X7stOIBv', baremId: '1C2Z7g-CrzN30jdrXCMGzK66_0BxZSaG9', hasGame: true },
+      { year: 2025, stage: 'Etapa republicană', date: '23 aprilie 2025', testId: '122Et9obFQVZ3RdaP611GdBgbEXc2OWrH', baremId: '1J8LEtwziU9j9PdojISx2G2h92K6HFXo-' },
+      { year: 2024, stage: 'Etapa republicană', date: '10 mai 2024', testId: '1PzsTW0MD8peR2F5dsE9fA6qTReDDaL-L', baremId: '1rke7TEzvoP9PAx3fee9WcMMxlT96JSYq' },
+      { year: 2023, stage: 'Etapa republicană', date: '08 mai 2023', testId: '1aLtHbMEY87B7Z_DXZKhxMzV3K00YBykx', baremId: '1tVFt0Q9yIC2BHWp92OCp8eaD4qPjMAQq' },
+      { year: 2022, stage: 'Etapa republicană', date: '27 martie 2022', testId: '1qE_PKHshEmpfI5dWg-U5pRDkR56_j4AP', baremId: '19bpeRAI6cCmsz-MlUFjp9m5zMXamzzG0' },
+      { year: 2019, stage: 'Etapa republicană', date: '26 martie 2019', testId: '1z5Qw-cmA1LrWw4ZMqmxiCeOdNwcMPXn2', baremId: '1HYEQ0Nby7md6_SyS6FwZopcnNl8vlUPd' },
+      { year: 2018, stage: 'Etapa republicană', date: '28 aprilie 2018', testId: '19nkXzXehYgLrAbzQkr6AVq1y91fzS-Ob', baremId: '139C3or-lY_aUmUo3u_HMhnukKcaVRur_' }
+    ],
+    games: [
+      {
+        id: 'clasa10_2026',
+        year: 2026,
+        stageType: 'republicana',
+        stageLabel: 'Etapa republicană',
+        title: 'Olimpiada 2026 — Etapa republicană',
+        desc: '03 mai 2026 • Procese exogene, roci metamorfice, fusuri orare, fronturi atmosferice și localizare pe harta lumii.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🗺️ Hartă interactivă'],
+        file: 'olimpiada_geografie_clasa10_2026.html'
+      },
+      {
+        id: 'clasa10_raionala_2026',
+        year: 2026,
+        stageType: 'raionala',
+        stageLabel: 'Etapa raională / municipală',
+        title: 'Olimpiada 2026 — Etapa raională',
+        desc: '28 februarie 2026 • Structura internă a Terrei, solstiții și echinocții, calcule geografice, relief carstic și hartă.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🗺️ Hartă interactivă'],
+        file: 'olimpiada_geografie_clasa10_raionala_2026.html'
+      }
+    ]
+  },
+
+  11: {
+    label: 'Clasa a XI-a',
+    topic: 'Geografia umană a lumii',
+    driveFolderId: '1C_nFBQGTpM9h_bf_UnOyr3aRFPev3gQP',
+    pdfs: [
+      { year: 2026, stage: 'Etapa republicană', date: '03 mai 2026', testId: '1tUURGY571UhfEercpgMCiafQbC6JXe3h', baremId: '1z5FPsfUEQIaamfRgqSkxsiC3tfBDvkCK', hasGame: true },
+      { year: 2026, stage: 'Etapa raională',    date: '28 februarie 2026', testId: '1uzMz829oO2xgzrkZ9EcsQlnj7u4Ak-RK', baremId: '1La-YvHEWG2gZ7l9PtdEvB3luKKAFyzM7', hasGame: true },
+      { year: 2025, stage: 'Etapa republicană', date: '23 aprilie 2025', testId: '1FMXXVh8wXOv_LKtrJcIcJLeL1r-L0GF0', baremId: '1YCqOMST9J3CCEfk3xzjnj3IViXP09qe7' },
+      { year: 2024, stage: 'Etapa republicană', date: '10 mai 2024', testId: '1TizQl-TzgWaTL3YPJPe9cEruOgZeBQuM', baremId: '1r4hdjlO-hrR5QwM9yQANNe-gnMOnvLpY' },
+      { year: 2023, stage: 'Etapa republicană', date: '08 mai 2023', testId: '1B4yTtwV-RIH_Etx4UjWqqa5dRBqG-y7w', baremId: '13mtcoBkMz4LiGnoq_M058UvvgRdPCF2g' },
+      { year: 2022, stage: 'Etapa republicană', date: '27 martie 2022', testId: '1Y75xVe8tl8ZTumG6Vv3jEwdJ-ScPRqHD', baremId: '1UXplttCKRCCPit6Lq6xNoJ4dYzOzq_vR' },
+      { year: 2019, stage: 'Etapa republicană', date: '26 martie 2019', testId: '1VXRM7gNb3A1fA1b25hPx7I42R0aK9GXi', baremId: '1xh-LCQokv-gO8o3WS2uHPg5yotc59qD2' },
+      { year: 2018, stage: 'Etapa republicană', date: '28 aprilie 2018', testId: '1bbix8hwnDEfHCxlM2_g9ZJyFb6OvgoJp', baremId: '1v6cl_V_fyVamphXxAEFj5srzh9eVvAc-' }
+    ],
+    games: [
+      {
+        id: 'clasa11_republicana_2026',
+        year: 2026,
+        stageType: 'republicana',
+        stageLabel: 'Etapa republicană',
+        title: 'Olimpiada 2026 — Etapa republicană',
+        desc: '03 mai 2026 • Industrie ușoară și sistem lohn, UE–MERCOSUR, harta Oceaniei și localizare pe harta lumii.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🗺️ Hartă politică'],
+        file: 'olimpiada_geografie_clasa11_republicana_2026.html'
+      },
+      {
+        id: 'clasa11_raionala_2026',
+        year: 2026,
+        stageType: 'raionala',
+        stageLabel: 'Etapa raională / municipală',
+        title: 'Olimpiada 2026 — Etapa raională',
+        desc: '28 februarie 2026 • Tipologia statelor, piramide de vârstă, factori de localizare industrială și hartă-contur.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🗺️ Hartă politică'],
+        file: 'olimpiada_geografie_clasa11_raionala_2026.html'
+      }
+    ]
+  },
+
+  12: {
+    label: 'Clasa a XII-a',
+    topic: 'Geografie generală, umană și protecția mediului',
+    driveFolderId: '1VJj_1f34qsQC2pc9FOjCgq1sa788TOcC',
+    pdfs: [
+      { year: 2026, stage: 'Etapa republicană', date: '03 mai 2026', testId: '1KWbAoz2fQAlQTz6GncA9l2vAf0LoO1jz', baremId: '1eCAYfGiSPrLTfWviXsu9ct2nAUWAc5Q-', hasGame: true },
+      { year: 2026, stage: 'Etapa raională',    date: '28 februarie 2026', testId: '1l5tnvQuTWxlq511cWAeSQjqrQikq0Oaq', baremId: '15Pe2z6hP8NxqBJnqhSGG8EBpmnAbAouL', hasGame: true },
+      { year: 2025, stage: 'Etapa republicană', date: '23 aprilie 2025', testId: '1-Evp608X1YAP7-t8c3uTG9AMavHKSXcl', baremId: '1BwHAlITzuiDLaMaH9g9E9_fLcdBrMz7n' },
+      { year: 2024, stage: 'Etapa republicană', date: '10 mai 2024', testId: '1B-a71kc64GNPbiDkqLs2d3XCiYAhPZUr', baremId: '1Ov3f4UhWAZfeghZI5zIx64azt5VsSjHA' },
+      { year: 2023, stage: 'Etapa republicană', date: '08 mai 2023', testId: '1cgH6waeB1SqqR57yIPhrvzBxr861x_3Z', baremId: '19b7Jf3-xEFCRdIzoxG2VDa_NnngLrro5' },
+      { year: 2022, stage: 'Etapa republicană', date: '27 martie 2022', testId: '1ocojV1XI_W79tO9_b85P2sHX8wXqODdp', baremId: '1PhjL0ykbi86XE5l53K9nz3FkyBUQPOSO' },
+      { year: 2019, stage: 'Etapa republicană', date: '26 martie 2019', testId: '1yCiJUD3mExVNTa0R3CyqP_vth9EKtkxr', baremId: '1x10xjv-iD6fPCToNObab-mxT6a3GejGF' },
+      { year: 2018, stage: 'Etapa republicană', date: '28 aprilie 2018', testId: '15u1lLirB1nxRnGud8BLePmqI5M7VK9xa', baremId: '1TRplLMdZH-X9w63St9SEcGxTpr2UK99N' }
+    ],
+    games: [
+      {
+        id: 'clasa12_republicana_2026',
+        year: 2026,
+        stageType: 'republicana',
+        stageLabel: 'Etapa republicană',
+        title: 'Olimpiada 2026 — Etapa republicană',
+        desc: '03 mai 2026 • Călătorie imaginară (Europa de Nord), circulația atmosferei, plan topografic și harta lumii.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🧭 Plan topografic'],
+        file: 'olimpiada_geografie_clasa12_republicana_2026.html'
+      },
+      {
+        id: 'clasa12_raionala_2026',
+        year: 2026,
+        stageType: 'raionala',
+        stageLabel: 'Etapa raională / municipală',
+        title: 'Olimpiada 2026 — Etapa raională',
+        desc: '28 februarie 2026 • Călătorie imaginară (Australia), azonalitate, vulcanism, plan topografic și harta lumii.',
+        features: ['⏱ 180 min', '🎯 100 p.', '🧭 Plan topografic'],
+        file: 'olimpiada_geografie_clasa12_raionala_2026.html'
+      }
+    ]
+  }
+};
+
+const GRADES = [9, 10, 11, 12];
+const STORAGE_KEY = 'geo_olimpiade_done_v2';
+
+// Support optional ?clasa=9|10|11|12|all query parameter
+function getInitialGrade() {
+  const p = new URLSearchParams(window.location.search).get('clasa');
+  if (p === 'all') return 'all';
+  if (p && ['9', '10', '11', '12'].includes(p)) return Number(p);
+  return 9;
+}
+
+let activeGrade = getInitialGrade();
+let searchTerm = '';
+
+function loadDoneSet() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('geo_olimpiade_done_v1');
+    return new Set(raw ? JSON.parse(raw) : []);
+  } catch (e) {
+    return new Set();
+  }
+}
+
+function saveDoneSet(setObj) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(setObj)));
+  } catch (e) {}
+}
+
+let doneSet = loadDoneSet();
+
+function allGameIds() {
+  return GRADES.flatMap(g => DATA[g].games.map(x => x.id));
+}
+
+function toggleDone(id) {
+  if (doneSet.has(id)) doneSet.delete(id);
+  else doneSet.add(id);
+  saveDoneSet(doneSet);
+  updateProgress();
+  renderPortal();
+}
+
+function resetProgress() {
+  if (doneSet.size === 0) return;
+  if (!confirm('Sigur vrei să ștergi marcajele de teste digitale rezolvate?')) return;
+  doneSet.clear();
+  saveDoneSet(doneSet);
+  updateProgress();
+  renderPortal();
+}
+
+function updateProgress() {
+  const ids = allGameIds();
+  const total = ids.length;
+  const done = ids.filter(id => doneSet.has(id)).length;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('doneCount').textContent = `${done} / ${total}`;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+}
+
+function normalizeText(str) {
+  return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function stageTagClass(stageType) {
+  if (stageType === 'raionala') return 'tag-raionala';
+  if (stageType === 'republicana') return 'tag-republicana';
+  return 'tag-arhiva';
+}
+
+function selectGrade(g) {
+  activeGrade = g;
+  renderTabs();
+  renderPortal();
+}
+
+function renderTabs() {
+  const tabsEl = document.getElementById('classTabs');
+  const totalPdfs = GRADES.reduce((s, g) => s + DATA[g].pdfs.length, 0);
+  const totalGames = GRADES.reduce((s, g) => s + DATA[g].games.length, 0);
+
+  let out = GRADES.map(g => {
+    const d = DATA[g];
+    const isActive = activeGrade === g;
+    return `
+      <button type="button" class="class-tab ${isActive ? 'active' : ''}" onclick="selectGrade(${g})">
+        <span class="tab-label">${d.label}</span>
+        <span class="tab-sub">${d.pdfs.length} PDF • ${d.games.length} digitale</span>
+      </button>
+    `;
+  }).join('');
+
+  out += `
+    <button type="button" class="class-tab ${activeGrade === 'all' ? 'active' : ''}" onclick="selectGrade('all')">
+      <span class="tab-label">Toate clasele</span>
+      <span class="tab-sub">${totalPdfs} PDF • ${totalGames} digitale</span>
+    </button>
+  `;
+
+  tabsEl.innerHTML = out;
+}
+
+function renderGradeSection(g, queryNorm) {
+  const d = DATA[g];
+
+  const pdfs = d.pdfs.filter(p => {
+    if (!queryNorm) return true;
+    const hay = normalizeText(`${d.label} ${d.topic} ${p.year} ${p.stage} ${p.date} pdf barem`);
+    return hay.includes(queryNorm);
+  });
+
+  const games = d.games.filter(t => {
+    if (!queryNorm) return true;
+    const hay = normalizeText(`${d.label} ${d.topic} ${t.year} ${t.stageLabel} ${t.title} ${t.desc} digital joc interactiv`);
+    return hay.includes(queryNorm);
+  });
+
+  if (pdfs.length === 0 && games.length === 0) return '';
+
+  const pdfRowsHtml = pdfs.length
+    ? pdfs.map(p => `
+        <div class="pdf-row">
+          <div class="pdf-info">
+            <div class="pdf-line1">
+              <span class="pdf-year">${p.year}</span>
+              <span class="pdf-stage">${p.stage}</span>
+              ${p.hasGame ? '<span class="mini-game-dot" title="Disponibil și ca test digital interactiv alăturat">🎮 și digital</span>' : ''}
+            </div>
+            <span class="pdf-date">${p.date}</span>
+          </div>
+          <div class="pdf-btns">
+            <a class="btn-pdf" href="${driveFileUrl(p.testId)}" target="_blank" rel="noopener" title="Deschide testul oficial PDF">
+              📄 Test
+            </a>
+            <a class="btn-barem" href="${driveFileUrl(p.baremId)}" target="_blank" rel="noopener" title="Deschide baremul de verificare PDF">
+              ✅ Barem
+            </a>
+          </div>
+        </div>
+      `).join('')
+    : `<div style="padding:18px;color:var(--muted);font-size:13.5px;text-align:center;">Niciun fișier PDF nu corespunde căutării.</div>`;
+
+  const gamesHtml = games.length
+    ? games.map(t => {
+        const isDone = doneSet.has(t.id);
+        return `
+          <article class="game-card ${isDone ? 'done' : ''}">
+            <div>
+              <div class="game-top">
+                <span class="tag ${stageTagClass(t.stageType)}">${t.stageLabel}</span>
+                <span class="year-chip">${t.year}</span>
+              </div>
+              <h4 class="game-title">${t.title}</h4>
+              <p class="game-desc">${t.desc}</p>
+              <div class="game-features">
+                ${t.features.map(f => `<span class="feat-chip">${f}</span>`).join('')}
+              </div>
+            </div>
+            <div class="game-actions">
+              <a class="btn-play" href="${GITHUB_BASE + t.file}" target="_blank" rel="noopener">
+                ▶ Începe testul
+              </a>
+              <button type="button" class="btn-done" onclick="toggleDone('${t.id}')" title="Marchează testul ca rezolvat">
+                ${isDone ? '✓ Rezolvat' : 'Marchează'}
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('')
+    : `<div style="grid-column:1/-1;padding:24px;color:var(--muted);font-size:14px;text-align:center;">Niciun test digital nu corespunde căutării.</div>`;
+
+  return `
+    <section class="grade-block">
+      <div class="grade-banner">
+        <div class="grade-banner-left">
+          <h2>${d.label}</h2>
+          <span class="grade-topic-pill">${d.topic}</span>
+        </div>
+        <a class="btn-drive-folder" href="${driveFolderUrl(d.driveFolderId)}" target="_blank" rel="noopener">
+          📁 Mapa Google Drive (${d.label}) ↗
+        </a>
+      </div>
+
+      <div class="workspace-grid">
+        <!-- STÂNGA: Teste fizice PDF + Bareme -->
+        <div class="panel-pdf">
+          <div class="panel-head">
+            <h3>📄 Teste format fizic (PDF) & Bareme</h3>
+            <span class="panel-count">${pdfs.length} ${pdfs.length === 1 ? 'ediție' : 'ediții'}</span>
+          </div>
+          <div class="panel-subnote">
+            Arhivă oficială MEC / ANCE (2018–2026) pentru rezolvare pe hârtie și autoverificare după barem.
+          </div>
+          <div class="pdf-list">
+            ${pdfRowsHtml}
+          </div>
+        </div>
+
+        <!-- DREAPTA (dimensiune mai mare): Teste digitale interactive -->
+        <div class="panel-digital">
+          <div class="panel-head">
+            <h3>🎮 Teste digitale interactive (Exersare online)</h3>
+            <span class="panel-count">${games.length} ${games.length === 1 ? 'test interactiv' : 'teste interactive'}</span>
+          </div>
+          <div class="digital-intro">
+            <span>✅ Verificare automată</span>
+            <span>🔀 Variante amestecate</span>
+            <span>🗺️ Hărți-contur clickabile</span>
+            <span>📥 Export raport .txt</span>
+          </div>
+          <div class="digital-grid">
+            ${gamesHtml}
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderPortal() {
+  const q = normalizeText(searchTerm.trim());
+  const gradesToShow = activeGrade === 'all' ? GRADES : [activeGrade];
+  const htmlOut = gradesToShow.map(g => renderGradeSection(g, q)).filter(Boolean).join('');
+
+  const root = document.getElementById('portalRoot');
+  if (!htmlOut) {
+    root.innerHTML = `<div class="empty-state">Nu au fost găsite teste pentru „${searchTerm}”. Încearcă alt an (ex. 2026, 2025, 2019) sau schimbă clasa.</div>`;
+    return;
+  }
+  root.innerHTML = htmlOut;
+}
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  renderPortal();
+});
+
+renderTabs();
+updateProgress();
+renderPortal();
+</script>
+</body>
+</html>
